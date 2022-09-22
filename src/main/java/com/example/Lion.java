@@ -2,20 +2,16 @@ package com.example;
 
 import java.util.List;
 
-public class Lion extends Animal{
+public class Lion {
 
     boolean hasMane;
+    Predator predator;
 
-    private WildСat wildСat;
+    Animal animal = new Animal();
 
-    public Lion (WildСat wildСat){
-        this.wildСat=wildСat;
+    public Lion(Predator predator){
+        this.predator=predator;
     }
-    private Animal animal;
-    public Lion (Animal animal){
-        this.animal=animal;
-    }
-
 
     public Lion(String sex) throws Exception {
         if ("Самец".equals(sex)) {
@@ -27,8 +23,10 @@ public class Lion extends Animal{
         }
     }
 
+
+
     public int getKittens() {
-        return wildСat.getKittens();
+        return predator.getKittens();
     }
 
     public boolean doesHaveMane() {
