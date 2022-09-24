@@ -7,8 +7,6 @@ public class Lion {
     boolean hasMane;
     Predator predator;
 
-    Animal animal = new Animal();
-
     public Lion(Predator predator){
         this.predator=predator;
     }
@@ -34,7 +32,7 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return animal.getFood("Хищник");
+        return predator.getFood("Хищник");
     }
 
 }

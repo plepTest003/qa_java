@@ -3,27 +3,42 @@ package com.example;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AnimalTest {
-    @Mock
-    Animal animal;
+
 
     @Test
     public void testAnimalGetFood() throws Exception {
-        Mockito.when(animal.getFood(Mockito.anyString())).thenReturn((List) Collections.singletonList("Test"));
-        System.out.println(animal.getFood("Травоядное")); // выведется 5
-        System.out.println(animal.getFood("Т"));
-        String actual;
-        Assert.assertEquals(List.of("Test"), animal.getFood(Mockito.anyString()));
+        Animal animal = new Animal();
+        List<String> actual = animal.getFood("Травоядное");
+        Assert.assertEquals(List.of("Трава", "Различные растения"), actual);
+    }
+
+    @Test
+    public void testAnimalGetFoodPredator () throws Exception {
+        Animal animal = new Animal();
+        List<String> actual = animal.getFood("Хищник");
+        Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), actual);
+    }
+
+    @Test
+    public void testAnimalanimalKind() {
+
+        try {
+            Animal animal = new Animal();
+            System.out.println(animal.getFood("Насекомое"));
+            Assert.fail( "Should have thrown an exception" );
+        }
+        catch (Exception e) {
+            final String expected = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
+            assertEquals( expected, e.getMessage());
+            System.out.println("Exeption is checkec: " + expected);
+        }
     }
 }

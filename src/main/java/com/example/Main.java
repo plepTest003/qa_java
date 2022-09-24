@@ -1,10 +1,10 @@
 package com.example;
 
 public class Main {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws Exception {
         Feline feline = new Feline();
         Lion lion = new Lion(feline);
         lion.getKittens();
+        lion.getFood();
     }
 }

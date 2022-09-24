@@ -65,10 +65,9 @@ public class LionTest {
 
         Lion lion = new Lion(predator);
 
-        System.out.println("Лев питаеться: " + lion.getFood());
-
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
-
+        Mockito.when(lion.getFood()).thenReturn(expected);
+        System.out.println(lion.getFood());
         assertEquals(expected, lion.getFood());
     }
 
