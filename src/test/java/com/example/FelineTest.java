@@ -18,7 +18,6 @@ public class FelineTest {
     @Test
     public void testFelineEatMeat() throws Exception {
         Feline feline = new Feline();
-        System.out.println(feline.eatMeat());
         List<String> actual = feline.eatMeat();
         assertEquals(List.of("Животные", "Птицы", "Рыба"), actual);
 

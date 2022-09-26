@@ -15,9 +15,6 @@ public class CatTest {
     @Mock
     Feline feline;
 
-    @Mock
-    Predator predator;
-
     @Test
     public void testCatGetSound(){
         Cat cat = new Cat(feline);
@@ -29,10 +26,8 @@ public class CatTest {
     public void testCatGetFood() throws Exception {
         Cat cat = new Cat(feline);
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
-        System.out.println(cat.getFood());
-        Mockito.when(cat.getFood()).thenReturn(expected);
+        Mockito.when(feline.eatMeat()).thenReturn(expected);
         System.out.println(cat.getFood());
         assertEquals(expected, cat.getFood());
-
     };
 }

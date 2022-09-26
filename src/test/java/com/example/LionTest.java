@@ -19,23 +19,20 @@ public class LionTest {
 
     @Test
     public void testLionTrueSex() throws Exception {
-        Lion lion = new Lion("Самец");
-        System.out.println(lion.hasMane);
+        Lion lion = new Lion(predator, "Самец");
         assertEquals(true, lion.doesHaveMane());
     }
 
     @Test
     public void testLionFalseSex() throws Exception {
-        Lion lion = new Lion("Самка");
-        System.out.println(lion.hasMane);
+        Lion lion = new Lion(predator,"Самка");
         assertEquals(false, lion.doesHaveMane());
     }
     @Test
     public void testLionExeptionSex() {
 
         try {
-            Lion lion = new Lion("Кот");
-            System.out.println(lion.hasMane);
+            Lion lion = new Lion(predator,"Оно");
             lion.doesHaveMane();
             Assert.fail( "Should have thrown an exception" );
         }
@@ -47,26 +44,23 @@ public class LionTest {
     }
     @Test
     public void testLionGetKittens(){
-        Lion lion = new Lion(predator);
-        System.out.println(lion.getKittens());
-        Mockito.when(lion.getKittens()).thenReturn(4);
+        Lion lion = new Lion(predator, true);
+        Mockito.when(predator.getKittens()).thenReturn(4);
         int countKittens = lion.getKittens();
         System.out.println(lion.getKittens());
         assertEquals(4, countKittens);}
     @Test
     public void testLionDoesHaveMane(){
-        Lion lion = new Lion(predator);
-        System.out.println(lion.doesHaveMane());
-
+        Lion lion = new Lion(predator, false);
         assertEquals(false, lion.doesHaveMane());
     }
     @Test
     public void testLionGetFood() throws Exception {
 
-        Lion lion = new Lion(predator);
+        Lion lion = new Lion(predator, true);
 
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
-        Mockito.when(lion.getFood()).thenReturn(expected);
+        Mockito.when(predator.getFood("Хищник")).thenReturn(expected);
         System.out.println(lion.getFood());
         assertEquals(expected, lion.getFood());
     }

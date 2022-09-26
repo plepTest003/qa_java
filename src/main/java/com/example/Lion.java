@@ -7,11 +7,13 @@ public class Lion {
     boolean hasMane;
     Predator predator;
 
-    public Lion(Predator predator){
+    public Lion(Predator predator, boolean hasMane){
         this.predator=predator;
+        this.hasMane = hasMane;
     }
 
-    public Lion(String sex) throws Exception {
+    public Lion(Predator predator, String sex) throws Exception {
+        this.predator=predator;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -20,8 +22,6 @@ public class Lion {
             throw new Exception("Используйте допустимые значения пола животного - самей или самка");
         }
     }
-
-
 
     public int getKittens() {
         return predator.getKittens();
